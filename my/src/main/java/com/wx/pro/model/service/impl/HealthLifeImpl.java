@@ -72,20 +72,55 @@ public class HealthLifeImpl implements IHealthLife {
 		ResultMessage rsm = new ResultMessage();
 		HealthLife health = null;
 		if (!StringUtils.isEmpty(healthBean.getLifeHealthName())
-				&& healthBean.getUserId()!=null) {
+				&& healthBean.getUserId() != null) {
 			health = new HealthLife();
 			health.setAddDate(new Date());
 			health.setLastModifyDate(new Date());
 			health.setLifeHealthName(healthBean.getLifeHealthName());
 			health.setUserId(healthBean.getUserId());
-			
+
 			healthLifeDao.insert(health);
 
-		}else{
+		} else {
 			rsm.setStatus(0);
 			rsm.setMessage("HealthName»òÕßUserId²»ÄÜÎª¿Õ");
 		}
 		return null;
 	}
 
+	/**
+	 * ±à¼­½¡¿µÉú»î
+	 * 
+	 * @return
+	 */
+	public ResultMessage editHealthLife(HealthLife health) {
+		ResultMessage rsm = new ResultMessage();
+		if (health.getuId() != null
+				&& !StringUtils.isEmpty(health.getLifeHealthName())) {
+			health.setLastModifyDate(new Date());
+			healthLifeDao.updateByPrimaryKey(health);
+			rsm.setMessage("success");
+			rsm.setStatus(1);
+		} else {
+			rsm.setStatus(0);
+			rsm.setMessage("±à¼­Ê§°Ü");
+		}
+		return rsm;
+	}
+
+	/*
+	 * É¾³ý
+	 */
+	public ResultMessage delHealthLife(Integer id) {
+		ResultMessage rsm = new ResultMessage();
+		if (id != null) {
+			healthLifeDao.deleteByPrimaryKey(id);
+			rsm.setStatus(1);
+			rsm.setMessage("success");
+		}else{
+			rsm.setStatus(0);
+			rsm.setMessage("±à¼­Ê§°Ü");
+		}
+		return rsm;
+	}
 }

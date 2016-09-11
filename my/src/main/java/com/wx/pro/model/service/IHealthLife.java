@@ -15,4 +15,8 @@ public interface IHealthLife {
 	public Integer deleteObject(Integer id);
 	
 	public ResultMessage addHealthLife(HealthLifeBean healthBean);
+	
+	public ResultMessage editHealthLife(HealthLife health);
+	
+	public ResultMessage delHealthLife(Integer id);
 }
