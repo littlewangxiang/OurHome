@@ -1,6 +1,10 @@
 package com.wx.pro.common.entity;
 
-
+/**
+ * 生活缴费类
+ * @author Administrator
+ *
+ */
 public class LivingPayment extends BaseEntity{
 
     private User userId;

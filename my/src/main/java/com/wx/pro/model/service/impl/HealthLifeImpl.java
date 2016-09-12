@@ -14,7 +14,7 @@ import com.wx.pro.model.dao.UserMapper;
 import com.wx.pro.model.service.IHealthLife;
 
 /**
- * ½¡¿µÉú»î¹ÜÀí·şÎñ
+ * å¥åº·ç”Ÿæ´»ç®¡ç†ç±»
  * 
  * @author wx-simon
  */
@@ -64,7 +64,7 @@ public class HealthLifeImpl implements IHealthLife {
 	}
 
 	/**
-	 * Ìí¼ÓÒ»Ìõ½¡¿µÉú»î¼ÇÂ¼
+	 * æ·»åŠ ä¸€æ¡å¥åº·ç”Ÿæ´»è®°å½•
 	 * 
 	 * @return
 	 */
@@ -83,13 +83,13 @@ public class HealthLifeImpl implements IHealthLife {
 
 		} else {
 			rsm.setStatus(0);
-			rsm.setMessage("HealthName»òÕßUserId²»ÄÜÎª¿Õ");
+			rsm.setMessage("HealthNameï¿½ï¿½ï¿½ï¿½UserIdï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½");
 		}
 		return null;
 	}
 
 	/**
-	 * ±à¼­½¡¿µÉú»î
+	 * æ›´æ–°
 	 * 
 	 * @return
 	 */
@@ -103,13 +103,13 @@ public class HealthLifeImpl implements IHealthLife {
 			rsm.setStatus(1);
 		} else {
 			rsm.setStatus(0);
-			rsm.setMessage("±à¼­Ê§°Ü");
+			rsm.setMessage("ï¿½à¼­Ê§ï¿½ï¿½");
 		}
 		return rsm;
 	}
 
 	/*
-	 * É¾³ı
+	 * åˆ é™¤
 	 */
 	public ResultMessage delHealthLife(Integer id) {
 		ResultMessage rsm = new ResultMessage();
@@ -119,7 +119,7 @@ public class HealthLifeImpl implements IHealthLife {
 			rsm.setMessage("success");
 		}else{
 			rsm.setStatus(0);
-			rsm.setMessage("±à¼­Ê§°Ü");
+			rsm.setMessage("ï¿½à¼­Ê§ï¿½ï¿½");
 		}
 		return rsm;
 	}

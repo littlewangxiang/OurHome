@@ -1,19 +1,19 @@
 package com.wx.pro.common.entity;
 
 /**
- * 
+ * å¥‡é—»å¼‚äº‹è®¨è®ºç±»
  * @author wx-simon
  *
  */
 public class InsterestThingDiscuss extends BaseEntity{
 
-    private Integer insterestThingId;//ÆæÎÅÒìÊÂid
+    private Integer insterestThingId;//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½id
 
-    private User userId;//ÆÀÂÛÕß
+    private User userId;//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
-    private Integer parentDiscussId;//ÆÀÂÛÕß»Ø¸´µÄÉÏÒ»¸öÈËµÄidÈç¹ûÃ»ÓĞÎªnull
+    private Integer parentDiscussId;//ï¿½ï¿½ï¿½ï¿½ï¿½ß»Ø¸ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ëµï¿½idï¿½ï¿½ï¿½Ã»ï¿½ï¿½Îªnull
 
-    private String commentInfo;//ÆÀÂÛ
+    private String commentInfo;//ï¿½ï¿½ï¿½ï¿½
 
     public Integer getInsterestThingId() {
         return insterestThingId;

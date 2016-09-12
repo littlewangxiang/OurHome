@@ -1,6 +1,10 @@
 package com.wx.pro.common.entity;
 
-
+/**
+ * 奇闻异事类
+ * @author Administrator
+ *
+ */
 public class InsterestThing extends BaseEntity{
     
     private User publishUserId;

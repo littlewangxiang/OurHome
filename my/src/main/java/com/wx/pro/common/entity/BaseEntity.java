@@ -4,7 +4,7 @@ import java.util.Date;
 
 /**
  * 
- * ËùÓĞ±íµÄ»ùÀà
+ * åŸºæœ¬å­—æ®µè¡¨
  * @author Administrator
  */
 public class BaseEntity {

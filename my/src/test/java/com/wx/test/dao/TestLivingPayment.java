@@ -27,8 +27,8 @@ public class TestLivingPayment {
 		livePay.setAddDate(new Date());
 		livePay.setDeleteStatus(1);
 		livePay.setLastModifyDate(new Date());
-		livePay.setName("16-9-12卖菜分摊");
-		livePay.setShareInfo("{[user_id: 1,user_name: '小明',share_status: 1,share_time: 2016-8-1512: 34: 12],[user_id: 2,user_name: '小李子',share_status: 1,share_time: 2016-8-1512: 34: 12]}");
+		livePay.setName("16-9-12涔拌彍");
+		livePay.setShareInfo("{[user_id: 1,user_name: '绗戣瘽',share_status: 1,share_time: 2016-8-1512: 34: 12],[user_id: 2,user_name: '鍛靛懙',share_status: 1,share_time: 2016-8-1512: 34: 12]}");
 		livePay.setSpecId(1);
 		livePay.setUserId(userDao.selectByPrimaryKey(1));
 		

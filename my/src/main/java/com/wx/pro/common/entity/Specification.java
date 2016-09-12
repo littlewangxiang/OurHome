@@ -1,7 +1,7 @@
 package com.wx.pro.common.entity;
 
 /**
- * ½É·ÑÏîÄ¿±í
+ * ç¼´è´¹é¡¹ç›®ç±»
  * @author Administrator
  */
 public class Specification extends BaseEntity{

@@ -25,7 +25,7 @@ public class TestInsterestThingDiscuss {
 	public void testAdd(){
 		InsterestThingDiscuss insterestDiscuss = new InsterestThingDiscuss();
 		insterestDiscuss.setAddDate(new Date());
-		insterestDiscuss.setCommentInfo("我也去过这里");
+		insterestDiscuss.setCommentInfo("鎴戜篃鐪嬭繃");
 		insterestDiscuss.setDeleteStatus(1);
 		insterestDiscuss.setInsterestThingId(1);
 		insterestDiscuss.setLastModifyDate(new Date());
