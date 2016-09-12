@@ -35,7 +35,7 @@ public class TestHealthLife {
 			health.setAddDate(new Date());
 			health.setDeleteStatus(1);
 			health.setLastModifyDate(new Date());
-			health.setLifeHealthName("ÍõÏé´óÉ¨³ı");
+			health.setLifeHealthName("æ¯å¤©å¥åº·");
 			health.setUserId(user);
 			int a = healthLifeDao.insert(health);
 			System.out.println(a);

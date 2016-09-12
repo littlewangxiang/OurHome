@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50617
 File Encoding         : 65001
 
-Date: 2016-09-12 13:40:19
+Date: 2016-09-12 16:57:35
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -108,13 +108,16 @@ CREATE TABLE `t_message` (
   `last_modify_date` datetime DEFAULT NULL,
   `message_info` varchar(200) DEFAULT NULL,
   `msg_type` int(3) DEFAULT NULL COMMENT '通知类型',
+  `send_user_id` int(11) DEFAULT NULL COMMENT '发送人',
+  `get_user_id` int(11) DEFAULT NULL COMMENT '接收人',
   PRIMARY KEY (`u_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='通知消息类';
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='通知消息类';
 
 -- ----------------------------
 -- Records of t_message
 -- ----------------------------
-INSERT INTO `t_message` VALUES ('1', '2016-09-12 13:06:42', '1', '2016-09-12 13:06:42', '您参与的购物分摊请及时转账哦', '1');
+INSERT INTO `t_message` VALUES ('1', '2016-09-12 13:06:42', '1', '2016-09-12 13:06:42', '您参与的购物分摊请及时转账哦', '1', '1', '1');
+INSERT INTO `t_message` VALUES ('2', '2016-09-12 15:18:48', '1', '2016-09-12 15:18:48', '您参与的分摊该交钱了', '1', '1', '2');
 
 -- ----------------------------
 -- Table structure for `t_specification`

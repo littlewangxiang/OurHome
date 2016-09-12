@@ -1,9 +1,9 @@
 package com.wx.pro.common.bean;
 
 public class ResultMessage {
-	private int status;
+	private int status;//-1失败
 	
-	private String message;
+	private String message;//失败或成功说明
 
 	public int getStatus() {
 		return status;
