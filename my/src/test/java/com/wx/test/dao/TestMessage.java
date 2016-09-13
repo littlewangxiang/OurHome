@@ -1,6 +1,7 @@
 package com.wx.test.dao;
 
 import java.util.Date;
+import java.util.List;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -9,6 +10,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.wx.pro.common.entity.Message;
+import com.wx.pro.common.entity.User;
 import com.wx.pro.model.dao.MessageMapper;
 import com.wx.pro.model.dao.UserMapper;
 
@@ -31,5 +33,11 @@ public class TestMessage {
 		message.setSendUser(userDao.selectByPrimaryKey(1));
 		message.setGetUser(userDao.selectByPrimaryKey(2));
 		messageDao.insert(message);
+	}
+	@Test
+	public void getListMsgByUser(){
+		User user = userDao.selectByPrimaryKey(2);
+		List<Message> lis=messageDao.getListMsgByUserId(2);
+		System.out.println(lis.size());
 	}
 }
