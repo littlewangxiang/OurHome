@@ -6,7 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
+import com.wx.pro.common.bean.ResultMessage;
+import com.wx.pro.common.bean.UserBean;
 import com.wx.pro.common.entity.User;
+import com.wx.pro.common.tools.UserTools;
 import com.wx.pro.model.dao.UserMapper;
 import com.wx.pro.model.service.IUserService;
 
@@ -16,39 +19,67 @@ public class UserServiceImpl implements IUserService {
 	@Autowired
 	private UserMapper userDao;
 
+	/**
+	 * 根据用户id获取用户
+	 */
 	@Override
 	public User getObjectById(Integer id) {
-		// TODO Auto-generated method stub
 		return userDao.selectByPrimaryKey(id);
 	}
 
+	/**
+	 * 新增一个用户
+	 */
 	@Override
-	public Integer saveObject(User user) {
-		// TODO Auto-generated method stub
-		int res = -1;
-		if (!StringUtils.isEmpty(user.getUserName())) {
+	public ResultMessage saveObject(UserBean usBean) {
+		ResultMessage rsm = new ResultMessage();
+		User user = new User();
+
+		if (!StringUtils.isEmpty(usBean.getUserName())
+				&& !StringUtils.isEmpty(usBean.getPassword())) {
+			user = UserTools.copyfromUsBean(user, usBean);
+			user.setAddDate(new Date());
 			user.setLastModifyDate(new Date());
-			if (user.getuId() != null) {
-				user.setAddDate(new Date());
-				res = userDao.insert(user);
-			} else {
-				res = userDao.updateByPrimaryKey(user);
-			}
+			user.setDeleteStatus(1);
+
+			rsm.setStatus(userDao.insert(user));
+			rsm.setMessage("新增用户成功");
+		} else {
+			rsm.setStatus(-1);
+			rsm.setMessage("新增用户失败，用户名和密码不能为空");
 		}
-		return res;
+		return rsm;
 	}
 
+	/**
+	 * 更新用户信息
+	 */
 	@Override
-	public Integer updateObject(User user) {
-		// TODO Auto-generated method stub
-		return saveObject(user);
+	public ResultMessage updateObject(User user) {
+		ResultMessage rsm = new ResultMessage();
+		
+		rsm.setStatus(-1);
+		if (user.getuId() != null && !StringUtils.isEmpty(user.getUserName())
+				&& !StringUtils.isEmpty(user.getPassword())) {
+			int res = userDao.updateByPrimaryKeySelective(user);
+			if(res!=-1)
+				rsm.setStatus(1);
+		}
+		if(rsm.getStatus()!=-1){
+			rsm.setMessage("更新成功");
+		}else{
+			rsm.setMessage("更新失败");
+		}
+		return rsm;
 	}
 
+	/**
+	 * 删除用户
+	 */
 	@Override
 	public Integer deleteObject(Integer id) {
-		// TODO Auto-generated method stub
 		Integer res = -1;
-		if(!StringUtils.isEmpty(id))
+		if (!StringUtils.isEmpty(id))
 			res = userDao.deleteByPrimaryKey(id);
 		return res;
 	}
