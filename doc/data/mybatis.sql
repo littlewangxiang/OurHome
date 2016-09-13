@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50617
 File Encoding         : 65001
 
-Date: 2016-09-12 16:57:35
+Date: 2016-09-13 15:29:14
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -111,13 +111,15 @@ CREATE TABLE `t_message` (
   `send_user_id` int(11) DEFAULT NULL COMMENT '发送人',
   `get_user_id` int(11) DEFAULT NULL COMMENT '接收人',
   PRIMARY KEY (`u_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='通知消息类';
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='通知消息类';
 
 -- ----------------------------
 -- Records of t_message
 -- ----------------------------
-INSERT INTO `t_message` VALUES ('1', '2016-09-12 13:06:42', '1', '2016-09-12 13:06:42', '您参与的购物分摊请及时转账哦', '1', '1', '1');
+INSERT INTO `t_message` VALUES ('1', '2016-09-12 13:06:42', '1', '2016-09-13 13:53:06', '您参与的购物分摊请及时转账哦', '1', '1', '1');
 INSERT INTO `t_message` VALUES ('2', '2016-09-12 15:18:48', '1', '2016-09-12 15:18:48', '您参与的分摊该交钱了', '1', '1', '2');
+INSERT INTO `t_message` VALUES ('3', '2016-09-13 08:47:36', '1', '2016-09-13 08:47:36', '您参与的分摊该交钱了', '1', '1', '2');
+INSERT INTO `t_message` VALUES ('4', '2016-09-13 14:00:38', '1', '2016-09-13 14:01:20', '您有一条通知：您需要及时支付所需承担的分摊费用', '1', '4', '4');
 
 -- ----------------------------
 -- Table structure for `t_specification`
@@ -153,10 +155,11 @@ CREATE TABLE `t_user` (
   `person_introduction` varchar(100) DEFAULT '' COMMENT '个人信息说明',
   `feel_word` varchar(30) DEFAULT '' COMMENT '个人心情',
   PRIMARY KEY (`u_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_user
 -- ----------------------------
-INSERT INTO `t_user` VALUES ('1', '2016-08-20 17:31:24', '2016-08-20 17:31:27', '0', '小王', '111111', '13661291886', '177dfd4476@qq.com', '我来自河北保定', '好晴天啊好晴天');
+INSERT INTO `t_user` VALUES ('1', '2016-08-20 17:31:24', '2016-08-20 17:31:27', '0', '水瓶', '111111', '13661291886', '123@yu.com', '我来自河北保定', '好晴天啊好晴天');
 INSERT INTO `t_user` VALUES ('2', '2016-08-21 09:39:04', '2016-08-21 09:39:04', '1', '小花', 'aaaaaa', '13672291486', '177rer76@qq.com', '我是一个好人，但不会是雷锋一样的好人', 'it is a goods day');
+INSERT INTO `t_user` VALUES ('3', '2016-09-13 15:20:08', '2016-09-13 15:20:08', '1', '小王', 'wx132', '12312412', null, null, null);
