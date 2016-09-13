@@ -1,5 +1,7 @@
 package com.wx.pro.model.dao;
 
+import java.util.List;
+
 import org.springframework.stereotype.Repository;
 
 import com.wx.pro.common.entity.Specification;
@@ -17,4 +19,6 @@ public interface SpecificationMapper {
     int updateByPrimaryKeySelective(Specification record);
 
     int updateByPrimaryKey(Specification record);
+    
+    List<Specification> getAllSpec();
 }

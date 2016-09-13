@@ -1,6 +1,7 @@
 package com.wx.test.dao;
 
 import java.util.Date;
+import java.util.List;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -23,8 +24,13 @@ public class TestSpecification {
 		spec.setAddDate(new Date());
 		spec.setDeleteStatus(1);
 		spec.setLastModifyDate(new Date());
-		spec.setName("Âò²Ë");
+		spec.setName("ç¼´è´¹é¡¹ç›®");
 		specificationDao.insert(spec);
+	}
+	@Test
+	public void testGetAll(){
+		List<Specification> list = specificationDao.getAllSpec();
+		System.out.println(list.size());
 	}
 	
 }

@@ -10,7 +10,6 @@ import com.wx.pro.common.bean.HealthLifeBean;
 import com.wx.pro.common.bean.ResultMessage;
 import com.wx.pro.common.entity.HealthLife;
 import com.wx.pro.model.dao.HealthLifeMapper;
-import com.wx.pro.model.dao.UserMapper;
 import com.wx.pro.model.service.IHealthLife;
 
 /**
@@ -18,7 +17,7 @@ import com.wx.pro.model.service.IHealthLife;
  * 
  * @author wx-simon
  */
-@Service("healthLifeService")
+@Service
 public class HealthLifeImpl implements IHealthLife {
 	@Autowired
 	private HealthLifeMapper healthLifeDao;
@@ -82,10 +81,10 @@ public class HealthLifeImpl implements IHealthLife {
 			healthLifeDao.insert(health);
 
 		} else {
-			rsm.setStatus(0);
-			rsm.setMessage("HealthName����UserId����Ϊ��");
+			rsm.setStatus(-1);
+			rsm.setMessage("HealthName不能为空UserId不能为空");
 		}
-		return null;
+		return rsm;
 	}
 
 	/**
@@ -102,8 +101,8 @@ public class HealthLifeImpl implements IHealthLife {
 			rsm.setMessage("success");
 			rsm.setStatus(1);
 		} else {
-			rsm.setStatus(0);
-			rsm.setMessage("�༭ʧ��");
+			rsm.setStatus(-1);
+			rsm.setMessage("更新失败");
 		}
 		return rsm;
 	}
@@ -118,8 +117,8 @@ public class HealthLifeImpl implements IHealthLife {
 			rsm.setStatus(1);
 			rsm.setMessage("success");
 		}else{
-			rsm.setStatus(0);
-			rsm.setMessage("�༭ʧ��");
+			rsm.setStatus(-1);
+			rsm.setMessage("删除失败");
 		}
 		return rsm;
 	}
