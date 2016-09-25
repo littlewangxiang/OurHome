@@ -1,5 +1,7 @@
 package com.wx.pro.model.dao;
 
+import java.util.List;
+
 import org.springframework.stereotype.Repository;
 
 import com.wx.pro.common.entity.InsterestThing;
@@ -17,4 +19,6 @@ public interface InsterestThingMapper {
     int updateByPrimaryKeySelective(InsterestThing record);
 
     int updateByPrimaryKey(InsterestThing record);
+    
+    List<InsterestThing> selectAll();
 }

@@ -19,7 +19,7 @@ public class TestUserDao {
 	
 	@Test
 	public void testselectByPrimaryKey(){
-		User u = userDao.selectByPrimaryKey(1);
+		User u = userDao.selectByPrimaryKey(2);
 		System.out.println(u.getFeelWord());
 	}
 	@Test
@@ -30,9 +30,9 @@ public class TestUserDao {
 		user.setFeelWord("it is a goods day");
 		user.setLastModifyDate(new Date());
 		user.setPassword("aaaaaa");
-		user.setPersonIntroduction("ÎÒÊÇÒ»¸öºÃÈË£¬µ«²»»áÊÇÀ×·æÒ»ÑùµÄºÃÈË");
+		user.setPersonIntroduction("ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½Ë£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×·ï¿½Ò»ï¿½ï¿½ï¿½Äºï¿½ï¿½ï¿½");
 		user.setPhone("13672291886");
-		user.setUserName("Ð¡»¨");
+		user.setUserName("Ð¡ï¿½ï¿½");
 		userDao.insert(user);
 	}
 	@Test

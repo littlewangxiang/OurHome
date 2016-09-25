@@ -28,10 +28,19 @@
     select 
     <include refid="Base_Column_List" />
     from t_insterest_thing
-    where u_id = #{uId,jdbcType=INTEGER}
+    where u_id = #{uId,jdbcType=INTEGER} and delete_status = 1
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from t_insterest_thing
+    where delete_status = 1
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from t_insterest_thing
+    update t_insterest_thing
+    <set>
+    	delete_status = 0
+    </set>
     where u_id = #{uId,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.wx.pro.common.entity.InsterestThing" >

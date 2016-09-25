@@ -1,6 +1,7 @@
 package com.wx.test.dao;
 
 import java.util.Date;
+import java.util.List;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -33,8 +34,18 @@ public class TestInsterestThing {
 		User user = userDao.selectByPrimaryKey(1);
 		insterest.setAddDate(new Date());
 		insterest.setLastModifyDate(new Date());
-		insterest.setInfo("第一个奇闻异事");
+		insterest.setInfo("hahah");
 		insterest.setPublishUserId(user);
 		insterestThingDao.insert(insterest);
+	}
+	
+	@Test
+	public void delTest(){
+		insterestThingDao.deleteByPrimaryKey(1);
+	}
+	@Test
+	public void getAll(){
+		List<InsterestThing> list = insterestThingDao.selectAll();
+		System.out.println(list.size());
 	}
 }
