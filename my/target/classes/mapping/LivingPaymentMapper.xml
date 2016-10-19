@@ -8,7 +8,7 @@
     <result column="last_modify_date" property="lastModifyDate" jdbcType="TIMESTAMP" />
 <!--     <result column="user_id" property="userId" jdbcType="INTEGER" /> -->
     <result column="name" property="name" jdbcType="VARCHAR" />
-    <result column="spec_id" property="specId" jdbcType="INTEGER" />
+<!--     <result column="spec_id" property="specId" jdbcType="INTEGER" /> -->
     <result column="share_info" property="shareInfo" jdbcType="VARCHAR" />
     <association column="user_id" javaType="com.wx.pro.common.entity.User" property="userId">
     	<id column="u_id" property="uId" jdbcType="INTEGER" />
@@ -22,19 +22,71 @@
 	    <result column="person_introduction" property="personIntroduction" jdbcType="VARCHAR" />
 	    <result column="feel_word" property="feelWord" jdbcType="VARCHAR" />
     </association>
+    <association column="spec_id" javaType="com.wx.pro.common.entity.Specification" property="specId">
+    	<id column="u_id" property="uId" jdbcType="INTEGER" />
+	    <result column="add_date" property="addDate" jdbcType="TIMESTAMP" />
+	    <result column="delete_status" property="deleteStatus" jdbcType="INTEGER" />
+	    <result column="last_modify_date" property="lastModifyDate" jdbcType="TIMESTAMP" />
+	    <result column="name" property="name" jdbcType="VARCHAR" />
+    </association>
     
   </resultMap>
   <sql id="Base_Column_List" >
-    u_id, add_date, delete_status, last_modify_date, user_id, name, spec_id, share_info
+    lp.u_id, lp.add_date, lp.delete_status, lp.last_modify_date, lp.user_id, lp.name, lp.spec_id, lp.share_info,
+    u.u_id, u.add_date, u.last_modify_date, u.delete_status, u.user_name, u.password, u.phone, u.email, 
+    u.person_introduction, u.feel_word,
+    sp.u_id, sp.add_date, sp.delete_status, sp.last_modify_date, sp.name
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
-    from t_living_payment
-    where u_id = #{uId,jdbcType=INTEGER}
+    from t_living_payment lp 
+    	left join t_user u on lp.user_id = u.u_id
+    	left join t_specification sp on sp.u_id = lp.spec_id
+    where lp.u_id = #{uId,jdbcType=INTEGER} and lp.delete_status = 1
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select 
+    <include refid="Base_Column_List" />
+    from t_living_payment lp
+    	left join t_user u on lp.user_id = u.u_id
+    	left join t_specification sp on sp.u_id = lp.spec_id
+    where lp.delete_status = 1
+  </select>
+  <select id="selectByParam" resultMap="BaseResultMap" parameterType="com.wx.pro.common.entity.LivingPayment">
+  	select 
+    <include refid="Base_Column_List" />
+    from t_living_payment lp
+    	left join t_user u on lp.user_id = u.u_id
+    	left join t_specification sp on sp.u_id = lp.spec_id
+    where lp.delete_status = 1
+      <if test="uId != null" >
+        and lp.u_id = #{uId,jdbcType=INTEGER}
+      </if>
+      <if test="addDate != null" >
+        and lp.add_date = #{addDate,jdbcType=TIMESTAMP}
+      </if>
+      <if test="lastModifyDate != null" >
+        and lp.last_modify_date = #{lastModifyDate,jdbcType=TIMESTAMP}
+      </if>
+      <if test="userId != null" >
+        and lp.user_id.u_id = #{userId.uId,jdbcType=INTEGER}
+      </if>
+      <if test="name != null" >
+        and lp.name =  #{name,jdbcType=VARCHAR}
+      </if>
+      <if test="specId != null" >
+        and lp.spec_id = #{specId,jdbcType=INTEGER}
+      </if>
+      <if test="shareInfo != null" >
+        and lp.share_info = #{shareInfo,jdbcType=VARCHAR}
+      </if>
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from t_living_payment
+    update t_living_payment
+    <set>
+    	delete_status = 0
+    </set>
     where u_id = #{uId,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.wx.pro.common.entity.LivingPayment" >
@@ -119,7 +171,7 @@
         name = #{name,jdbcType=VARCHAR},
       </if>
       <if test="specId != null" >
-        spec_id = #{specId,jdbcType=INTEGER},
+        spec_id = #{specId.uId,jdbcType=INTEGER},
       </if>
       <if test="shareInfo != null" >
         share_info = #{shareInfo,jdbcType=VARCHAR},

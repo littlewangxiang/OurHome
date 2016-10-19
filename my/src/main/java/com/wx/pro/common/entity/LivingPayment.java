@@ -11,7 +11,7 @@ public class LivingPayment extends BaseEntity{
 
     private String name;
 
-    private Integer specId;
+    private Specification specId;//缴费项目
 
     private String shareInfo;
 
@@ -31,13 +31,6 @@ public class LivingPayment extends BaseEntity{
         this.name = name == null ? null : name.trim();
     }
 
-    public Integer getSpecId() {
-        return specId;
-    }
-
-    public void setSpecId(Integer specId) {
-        this.specId = specId;
-    }
 
     public String getShareInfo() {
         return shareInfo;
@@ -46,4 +39,12 @@ public class LivingPayment extends BaseEntity{
     public void setShareInfo(String shareInfo) {
         this.shareInfo = shareInfo == null ? null : shareInfo.trim();
     }
+
+	public Specification getSpecId() {
+		return specId;
+	}
+
+	public void setSpecId(Specification specId) {
+		this.specId = specId;
+	}
 }

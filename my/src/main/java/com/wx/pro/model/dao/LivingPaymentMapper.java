@@ -1,5 +1,7 @@
 package com.wx.pro.model.dao;
 
+import java.util.List;
+
 import com.wx.pro.common.entity.LivingPayment;
 
 public interface LivingPaymentMapper {
@@ -14,4 +16,11 @@ public interface LivingPaymentMapper {
     int updateByPrimaryKeySelective(LivingPayment record);
 
     int updateByPrimaryKey(LivingPayment record);
+    
+    List<LivingPayment> selectAll();
+    
+    List<LivingPayment> selectByParam(LivingPayment record);
+    
 }
+
+
