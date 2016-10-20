@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import com.wx.pro.common.entity.Message;
-import com.wx.pro.common.entity.User;
 @Repository
 public interface MessageMapper {
     int deleteByPrimaryKey(Integer uId);

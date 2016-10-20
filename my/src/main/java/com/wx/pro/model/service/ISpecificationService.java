@@ -14,7 +14,7 @@ public interface ISpecificationService {
 	
 	public Specification addSpec(SpecificationBean specBean);
 	
-	public ResultMessage updateSpec(Specification spec);
+	public ResultMessage updateSpec(SpecificationBean specBean, Integer id);
 	
 	public ResultMessage delSpec(Integer id);
 }

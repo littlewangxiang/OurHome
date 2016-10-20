@@ -30,11 +30,26 @@
     from t_insterest_thing
     where u_id = #{uId,jdbcType=INTEGER} and delete_status = 1
   </select>
-  <select id="selectAll" resultMap="BaseResultMap">
+  <select id="selectByParam" resultMap="BaseResultMap" parameterType="com.wx.pro.common.entity.InsterestThing">
   	select
   	<include refid="Base_Column_List" />
     from t_insterest_thing
     where delete_status = 1
+    <if test="uId != null" >
+        and u_id = #{uId,jdbcType=INTEGER}
+      </if>
+      <if test="addDate != null" >
+        and add_date = #{addDate,jdbcType=TIMESTAMP}
+      </if>
+      <if test="lastModifyDate != null" >
+        and last_modify_date = #{lastModifyDate,jdbcType=TIMESTAMP}
+      </if>
+      <if test="publishUserId != null" >
+        and publish_user_id =  #{publishUserId.uId,jdbcType=INTEGER}
+      </if>
+      <if test="info != null" >
+        and info = #{info,jdbcType=VARCHAR}
+      </if>
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     update t_insterest_thing

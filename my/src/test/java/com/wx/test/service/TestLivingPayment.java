@@ -1,6 +1,7 @@
 package com.wx.test.service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.junit.Test;
@@ -11,6 +12,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.wx.pro.common.bean.LivingPaymentBean;
 import com.wx.pro.common.bean.ShareInfoBean;
+import com.wx.pro.common.entity.LivingPayment;
 import com.wx.pro.model.service.ILivingPaymentService;
 import com.wx.pro.model.service.IUserService;
 
@@ -39,5 +41,24 @@ public class TestLivingPayment {
 		
 		livePayService.addALivingPayment(livePayBean, shareInfoBeans);
 		
+	}
+	@Test
+	public void testgetLivingPayment(){
+		LivingPaymentBean livingPaymentBean = new LivingPaymentBean();
+		livingPaymentBean.setName("购物分摊今天的");
+		
+		List<LivingPayment> livePays = livePayService.getLivingPayment(livingPaymentBean);
+		System.out.println(livePays.size());
+		
+	}
+	@Test
+	public void testdelLivingPayment(){
+		livePayService.delLivingPayment(1);
+	}
+	@Test
+	public void testupdateLivingPaymet(){
+		LivingPayment livepay = livePayService.getLivingPaymentById(1);
+		livepay.setLastModifyDate(new Date());
+		livePayService.updateLivingPaymet(livepay);
 	}
 }

@@ -45,7 +45,10 @@ public class TestInsterestThing {
 	}
 	@Test
 	public void getAll(){
-		List<InsterestThing> list = insterestThingDao.selectAll();
+		InsterestThing aa = new InsterestThing();
+		aa.setInfo("第一个奇闻异事");
+		
+		List<InsterestThing> list = insterestThingDao.selectByParam(aa);
 		System.out.println(list.size());
 	}
 }

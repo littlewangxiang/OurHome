@@ -34,8 +34,35 @@ public class TestInsterestThingDiscuss {
 		insterestDiscussDao.insert(insterestDiscuss);
 	}
 	@Test
+	public void testAddSelective(){
+		InsterestThingDiscuss insterestDiscuss = new InsterestThingDiscuss();
+		insterestDiscuss.setAddDate(new Date());
+		insterestDiscuss.setCommentInfo("我也看过1");
+		insterestDiscuss.setDeleteStatus(1);
+		insterestDiscuss.setInsterestThingId(1);
+		insterestDiscuss.setLastModifyDate(new Date());
+		insterestDiscuss.setParentDiscussId(null);
+		insterestDiscuss.setUserId(userDao.selectByPrimaryKey(1));
+		insterestDiscussDao.insertSelective(insterestDiscuss);
+	}
+	@Test
 	public void testselect(){
-		InsterestThingDiscuss ihd = insterestDiscussDao.selectByPrimaryKey(1);
-		System.out.println(ihd.getCommentInfo());
+		InsterestThingDiscuss insterestdiscuss = insterestDiscussDao.selectByPrimaryKey(1);
+		System.out.println(insterestdiscuss.getCommentInfo());
+	}
+	@Test
+	public void testupdateByPrimaryKeySelective(){
+		InsterestThingDiscuss insterestdiscuss = insterestDiscussDao.selectByPrimaryKey(1);
+		insterestdiscuss.setLastModifyDate(new Date());
+		
+		insterestDiscussDao.updateByPrimaryKey(insterestdiscuss);
+	}
+	
+	@Test
+	public void testupdateByPrimaryKey(){
+		InsterestThingDiscuss insterestdiscuss = insterestDiscussDao.selectByPrimaryKey(1);
+		insterestdiscuss.setLastModifyDate(new Date());
+		
+		insterestDiscussDao.updateByPrimaryKeySelective(insterestdiscuss);
 	}
 }

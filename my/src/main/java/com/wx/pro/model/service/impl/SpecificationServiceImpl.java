@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.wx.pro.common.bean.ResultMessage;
 import com.wx.pro.common.bean.SpecificationBean;
 import com.wx.pro.common.entity.Specification;
+import com.wx.pro.common.tools.CommonTools;
 import com.wx.pro.model.dao.SpecificationMapper;
 import com.wx.pro.model.service.ISpecificationService;
 
@@ -53,20 +54,33 @@ public class SpecificationServiceImpl implements ISpecificationService {
 	}
 	/**
 	 * 更新一条缴费项目
+	 * 
+	 * @param specBean 参数
+	 * @param id 要更新的数据的id
 	 */
 	@Override
-	public ResultMessage updateSpec(Specification spec) {
-		// TODO Auto-generated method stub
-		return null;
+	@Transactional
+	public ResultMessage updateSpec(SpecificationBean specBean, Integer id) {
+		ResultMessage rms = new ResultMessage();
+		int res = -1;
+		Specification spec = createSpec(specBean);
+		spec.setuId(id);
+		res = specDao.updateByPrimaryKeySelective(spec);
+		rms = CommonTools.getRmsByStatus(res);
+		return rms;
 	}
 	
 	/**
 	 * 删除一条缴费项目
 	 */
 	@Override
+	@Transactional
 	public ResultMessage delSpec(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+		ResultMessage rms = new ResultMessage();
+		int res =-1;
+		res = specDao.deleteByPrimaryKey(id);
+		rms = CommonTools.getRmsByStatus(res);
+		return rms;
 	}
 
 	private Specification createSpec(SpecificationBean specBean){

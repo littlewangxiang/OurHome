@@ -20,11 +20,11 @@ public class IterestThingImpl implements IIterestThing {
 	InsterestThingMapper insteresThDao;
 	
 	/**
-	 * 获取所有的奇闻异事
+	 * 通过传参查询奇闻异事
 	 */
 	@Override
-	public List<InsterestThing> getAllInsterestThingsList() {
-		List<InsterestThing> allInsterestThs= insteresThDao.selectAll();
+	public List<InsterestThing> getInsterestThingsList(InsterestThing insterestTh) {
+		List<InsterestThing> allInsterestThs= insteresThDao.selectByParam(insterestTh);
 		return allInsterestThs;
 	}
 

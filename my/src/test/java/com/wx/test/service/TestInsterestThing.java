@@ -1,5 +1,6 @@
 package com.wx.test.service;
 
+import java.util.Date;
 import java.util.List;
 
 import org.junit.Test;
@@ -12,7 +13,6 @@ import com.wx.pro.common.bean.InsterestThingBean;
 import com.wx.pro.common.bean.ResultMessage;
 import com.wx.pro.common.entity.InsterestThing;
 import com.wx.pro.common.entity.User;
-import com.wx.pro.model.dao.UserMapper;
 import com.wx.pro.model.service.IIterestThing;
 import com.wx.pro.model.service.IUserService;
 
@@ -43,8 +43,22 @@ public class TestInsterestThing {
 	}
 	@Test
 	public void getAllTest(){
-		List<InsterestThing> list = interestThService.getAllInsterestThingsList();
+		InsterestThing aa = new InsterestThing();
+		aa.setInfo("第一个奇闻异事");
+		List<InsterestThing> list = interestThService.getInsterestThingsList(aa);
 		System.out.println(list.size());
 	}
+	@Test
+	public void testgetInsterestThingById(){
+		InsterestThing insterest = interestThService.getInsterestThingById(1);
+		System.out.println(insterest.getInfo());
+	}
+	@Test
+	public void testeditInsterestThing(){
+		InsterestThing insterest = interestThService.getInsterestThingById(1);
+		insterest.setLastModifyDate(new Date());
+		interestThService.editInsterestThing(insterest);
+	}
+	
 	
 }

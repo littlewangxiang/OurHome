@@ -11,7 +11,11 @@ public interface SpecificationMapper {
     int deleteByPrimaryKey(Integer uId);
 
     int insert(Specification record);
-
+    /**
+     * 选择性添加，同时添加完后会返回添加的id
+     * @param record
+     * @return
+     */
     int insertSelective(Specification record);
 
     Specification selectByPrimaryKey(Integer uId);

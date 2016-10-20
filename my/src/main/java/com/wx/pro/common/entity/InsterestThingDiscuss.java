@@ -7,13 +7,13 @@ package com.wx.pro.common.entity;
  */
 public class InsterestThingDiscuss extends BaseEntity{
 
-    private Integer insterestThingId;//��������id
+    private Integer insterestThingId;//奇闻趣事id
 
-    private User userId;//������
+    private User userId;//评论者信息
 
-    private Integer parentDiscussId;//�����߻ظ�����һ���˵�id���û��Ϊnull
+    private Integer parentDiscussId;//评论的父节点id没有则为空
 
-    private String commentInfo;//����
+    private String commentInfo;//评论信息
 
     public Integer getInsterestThingId() {
         return insterestThingId;

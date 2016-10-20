@@ -25,7 +25,10 @@
     where delete_status = 1
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from t_specification
+    update t_specification
+    <set >
+    	delete_status = 0
+    </set>
     where u_id = #{uId,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.wx.pro.common.entity.Specification" >

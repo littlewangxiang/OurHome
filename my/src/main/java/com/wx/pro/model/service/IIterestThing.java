@@ -8,7 +8,7 @@ import com.wx.pro.common.entity.InsterestThing;
 
 public interface IIterestThing {
 	
-	public List<InsterestThing> getAllInsterestThingsList();
+	public List<InsterestThing> getInsterestThingsList(InsterestThing insterestTh);
 	
 	public InsterestThing getInsterestThingById(Integer id);
 	

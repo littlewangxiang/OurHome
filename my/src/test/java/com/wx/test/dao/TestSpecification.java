@@ -43,5 +43,29 @@ public class TestSpecification {
 		List<Specification> list = specificationDao.getAllSpec();
 		System.out.println(list.size());
 	}
+	@Test
+	public void delById(){
+		specificationDao.deleteByPrimaryKey(1);
+	}
+	@Test
+	public void selectByPrimaryKey(){
+		Specification spec = specificationDao.selectByPrimaryKey(1);
+		System.out.println(spec.getName());
+	}
+	
+	@Test
+	public void updateByPrimaryKeySelective(){
+		Specification spec = specificationDao.selectByPrimaryKey(1);
+		spec.setLastModifyDate(new Date());
+		spec.setName("卖菜外");
+		specificationDao.updateByPrimaryKeySelective(spec);
+	}
+	@Test
+	public void updateByPrimaryKey(){
+		Specification spec = specificationDao.selectByPrimaryKey(1);
+		spec.setLastModifyDate(new Date());
+		spec.setName("卖菜外1");
+		specificationDao.updateByPrimaryKey(spec);
+	}
 	
 }

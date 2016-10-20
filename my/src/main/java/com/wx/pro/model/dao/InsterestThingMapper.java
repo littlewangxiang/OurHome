@@ -20,5 +20,5 @@ public interface InsterestThingMapper {
 
     int updateByPrimaryKey(InsterestThing record);
     
-    List<InsterestThing> selectAll();
+    List<InsterestThing> selectByParam(InsterestThing record);
 }

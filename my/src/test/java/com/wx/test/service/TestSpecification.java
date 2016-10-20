@@ -1,6 +1,5 @@
 package com.wx.test.service;
 
-import java.util.Date;
 import java.util.List;
 
 import org.junit.Test;
@@ -36,6 +35,16 @@ public class TestSpecification {
 		specBean.setName("测试项目");
 		Specification spec = specService.addSpec(specBean);
 		System.out.println(spec.getName());
+	}
+	@Test
+	public void testUpdateSpec(){
+		SpecificationBean specBean = new SpecificationBean();
+		specBean.setName("hahaha黑");
+		specService.updateSpec(specBean, 1);
+	}
+	@Test
+	public void testdelSpec(){
+		specService.delSpec(1);
 	}
 }
 
