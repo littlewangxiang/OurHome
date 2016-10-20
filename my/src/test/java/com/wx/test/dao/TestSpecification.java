@@ -28,6 +28,17 @@ public class TestSpecification {
 		specificationDao.insert(spec);
 	}
 	@Test
+	public void testAddSel(){
+		Specification spec = new Specification();
+		spec.setAddDate(new Date());
+		spec.setDeleteStatus(1);
+		spec.setLastModifyDate(new Date());
+		spec.setName("缴费项目1");
+		specificationDao.insertSelective(spec);
+		System.out.println(spec.getuId());
+	}
+	
+	@Test
 	public void testGetAll(){
 		List<Specification> list = specificationDao.getAllSpec();
 		System.out.println(list.size());

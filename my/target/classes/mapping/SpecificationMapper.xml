@@ -34,7 +34,7 @@
     values (#{uId,jdbcType=INTEGER}, #{addDate,jdbcType=TIMESTAMP}, #{deleteStatus,jdbcType=INTEGER}, 
       #{lastModifyDate,jdbcType=TIMESTAMP}, #{name,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.wx.pro.common.entity.Specification" >
+  <insert id="insertSelective" useGeneratedKeys="true" keyProperty="uId" parameterType="com.wx.pro.common.entity.Specification" >
     insert into t_specification
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="uId != null" >

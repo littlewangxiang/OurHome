@@ -95,7 +95,7 @@
       spec_id, share_info)
     values (#{uId,jdbcType=INTEGER}, #{addDate,jdbcType=TIMESTAMP}, #{deleteStatus,jdbcType=INTEGER}, 
       #{lastModifyDate,jdbcType=TIMESTAMP}, #{userId.uId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
-      #{specId,jdbcType=INTEGER}, #{shareInfo,jdbcType=VARCHAR})
+      #{specId.uId,jdbcType=INTEGER}, #{shareInfo,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.wx.pro.common.entity.LivingPayment" >
     insert into t_living_payment
@@ -113,7 +113,7 @@
         last_modify_date,
       </if>
       <if test="userId != null" >
-        user_id.uId,
+        user_id,
       </if>
       <if test="name != null" >
         name,
@@ -145,7 +145,7 @@
         #{name,jdbcType=VARCHAR},
       </if>
       <if test="specId != null" >
-        #{specId,jdbcType=INTEGER},
+        #{specId.uId,jdbcType=INTEGER},
       </if>
       <if test="shareInfo != null" >
         #{shareInfo,jdbcType=VARCHAR},

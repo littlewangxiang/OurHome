@@ -1,5 +1,6 @@
 package com.wx.test.service;
 
+import java.util.Date;
 import java.util.List;
 
 import org.junit.Test;
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.wx.pro.common.bean.SpecificationBean;
 import com.wx.pro.common.entity.Specification;
 import com.wx.pro.model.service.ISpecificationService;
 
@@ -28,4 +30,14 @@ public class TestSpecification {
 		Specification spec = specService.getSpecById(1);
 		System.out.println(spec.getName());
 	}
+	@Test
+	public void testAddAndId(){
+		SpecificationBean specBean =new SpecificationBean();
+		specBean.setName("测试项目");
+		Specification spec = specService.addSpec(specBean);
+		System.out.println(spec.getName());
+	}
 }
+
+
+

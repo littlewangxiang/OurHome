@@ -12,7 +12,7 @@ public interface ISpecificationService {
 	
 	public Specification getSpecById(Integer id);
 	
-	public ResultMessage addSpec(SpecificationBean specBean);
+	public Specification addSpec(SpecificationBean specBean);
 	
 	public ResultMessage updateSpec(Specification spec);
 	

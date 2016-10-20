@@ -1,9 +1,11 @@
 package com.wx.pro.model.service.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.wx.pro.common.bean.ResultMessage;
 import com.wx.pro.common.bean.SpecificationBean;
@@ -42,9 +44,12 @@ public class SpecificationServiceImpl implements ISpecificationService {
 	 * 添加一条缴费项目
 	 */
 	@Override
-	public ResultMessage addSpec(SpecificationBean specBean) {
+	@Transactional
+	public Specification addSpec(SpecificationBean specBean) {
 		// TODO Auto-generated method stub
-		return null;
+		Specification record = createSpec(specBean);
+		specDao.insertSelective(record);
+		return record;
 	}
 	/**
 	 * 更新一条缴费项目
@@ -64,4 +69,15 @@ public class SpecificationServiceImpl implements ISpecificationService {
 		return null;
 	}
 
+	private Specification createSpec(SpecificationBean specBean){
+		Specification spec = new Specification();
+		
+		if(specBean == null) return spec;
+		spec.setAddDate(new Date());
+		spec.setDeleteStatus(1);
+		spec.setLastModifyDate(new Date());
+		spec.setName(specBean.getName());
+		
+		return spec;
+	}
 }
