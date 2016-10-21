@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class AnnotationQuartz {
 	
-	@Scheduled(cron="0/5 * *  * * ? ")//每5秒执行一次
+	@Scheduled(cron="0/5000 * *  * * ? ")//每5秒执行一次
 	public void testSch(){
 		System.out.println("哈哈哈哈哈**********************");
 	}

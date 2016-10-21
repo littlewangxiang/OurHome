@@ -1,6 +1,8 @@
 package com.wx.pro.model.service.impl;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -82,6 +84,28 @@ public class UserServiceImpl implements IUserService {
 		if (!StringUtils.isEmpty(id))
 			res = userDao.deleteByPrimaryKey(id);
 		return res;
+	}
+	/**
+	 * 查询用户
+	 * 只能根据用户名、邮箱和手机查询
+	 * @param userBean
+	 * @return
+	 */
+	@Override
+	public List<User> getUserByParam(UserBean userBean){
+		List<User> users = new ArrayList<User>();
+		User user = new User();
+		if(!StringUtils.isEmpty(userBean.getEmail())){
+			user.setEmail(userBean.getEmail());
+		}
+		if(!StringUtils.isEmpty(userBean.getUserName())){
+			user.setUserName(userBean.getUserName());
+		}
+		if(!StringUtils.isEmpty(userBean.getPhone())){
+			user.setPhone(userBean.getPhone());
+		}
+		users = userDao.selectByParam(user);
+		return users;
 	}
 
 }

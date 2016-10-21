@@ -19,4 +19,16 @@
 	<!-- 打开定时器 -->
 	<task:annotation-driven/>
 	
+	<!-- @value注解 sprign读取属性文件-->
+	<bean id="configProperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+		<property name="locations">
+			<list>
+				<value>classpath:system.properties</value>
+			</list>
+		</property>
+	</bean>
+	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PreferencesPlaceholderConfigurer">
+		<property name="properties" ref="configProperties" />
+	</bean>
+	
 </beans>

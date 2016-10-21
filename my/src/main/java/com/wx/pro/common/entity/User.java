@@ -2,17 +2,17 @@ package com.wx.pro.common.entity;
 
 public class User extends BaseEntity{
 	
-    private String userName;
+    private String userName;//用户名
 
     private String password;
 
-    private String phone;
+    private String phone;//联系电话
 
-    private String email;
+    private String email;//邮箱
 
-    private String personIntroduction;
+    private String personIntroduction;//个人简介
 
-    private String feelWord;
+    private String feelWord;//心情感言
 
 	public String getUserName() {
 		return userName;

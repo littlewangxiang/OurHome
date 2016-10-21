@@ -13,6 +13,14 @@ public class UserBean {
     private String personIntroduction;
 
     private String feelWord;
+    
+    public UserBean(){}
+    
+    public UserBean(String userName,String phone,String email){
+    	this.userName = userName;
+    	this.phone = phone;
+    	this.email = email;
+    }
 
 	public String getUserName() {
 		return userName;

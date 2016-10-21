@@ -10,4 +10,10 @@ public class SpecificationBean {
 	public void setName(String name) {
 		this.name = name;
 	}
+	
+	public SpecificationBean(){}
+	
+	public SpecificationBean(String name){
+		this.name = name;
+	}
 }
