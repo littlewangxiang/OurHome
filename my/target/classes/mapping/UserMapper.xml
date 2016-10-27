@@ -53,6 +53,7 @@
       <if test="feelWord != null" >
         and feel_word = #{feelWord,jdbcType=VARCHAR}
       </if>
+      order by add_date desc
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
 <!--     delete from t_user -->

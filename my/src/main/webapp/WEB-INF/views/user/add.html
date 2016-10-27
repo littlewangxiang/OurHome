@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<script type="text/javascript" src="${jsPath!}jquery-1.7.2.min.js"></script>
+<title>用户信息</title>
+
+<script>
+	jQuery(document).ready(function(){
+		
+		
+	});
+	//保存信息
+	function saveForm(){
+		var flag = true;
+		
+		if(flag){
+			$("#theForm").submit();
+		}
+	}
+</script>
+</head>
+<body>
+	
+	<form id="theForm" action="${basePath!}UserManager/user/save" method="post">
+		<table>
+			<tr><td>用户名</td><td><input type="text" name="userName" id="userName" value="${user.userName!}"/></td></tr>
+			<tr><td>密码</td><td><input type="password" name="password" id="password" value="${user.password!}"/></td></tr>
+			<tr><td>重复密码</td><td><input type="text" name="passwordR" id="passwordR" value="${user.password!}"/></td></tr>
+			<tr><td>手机</td><td><input type="text" name="phone" id="phone" value="${user.phone!}"/></td></tr>
+			<tr><td>邮箱</td><td><input type="text" name="email" id="email" value="${user.email!}"/></td></tr>
+			<tr><td>个人简介</td><td><input type="text" name="personIntroduction" id="personIntroduction" value="${user.personIntroduction!}"/></td></tr>
+			<tr><td>心情语录</td><td><input type="text" name="feelWord" id="feelWord" value="${user.feelWord!}"/></td></tr>
+			<tr><td><input type="hidden" name="edit_flag" value="${edit!}" /><td></tr>
+			<tr><td><input type="hidden" name="uId" value="${user.uId!}" /><td></tr>
+		</table>
+		<input type="button" value="保存" onclick="saveForm()"/>
+		<input type="button" value="取消" onclick="javascript:history.back(-1);"/>
+	</form>
+</body>
+</html>

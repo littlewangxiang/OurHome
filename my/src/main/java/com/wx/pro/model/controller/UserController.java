@@ -10,11 +10,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.wx.pro.common.bean.ResultMessage;
 import com.wx.pro.common.bean.UserBean;
 import com.wx.pro.common.controller.BaseController;
 import com.wx.pro.common.entity.User;
+import com.wx.pro.common.tools.UserTools;
 import com.wx.pro.model.service.IUserService;
 
 @Controller
@@ -47,20 +50,30 @@ public class UserController extends BaseController {
 	}
 	@RequestMapping("/user/edit")
 	public String editUser(Integer userId,Model model){
+		User user = new User();
 		
-		User user = userService.getObjectById(userId);
-		if(user!=null && user.getuId()!=null){
-			model.addAttribute("user", user);
+		if(userId !=null ){
+			user = userService.getObjectById(userId);
 		}
-		model.addAttribute("edit", true);
+		model.addAttribute("user", user);
+		model.addAttribute("edit", "edit");
 		
 		return "user/add";
 	}
 	@RequestMapping("/user/save")
-	public String saveUser(){
-		UserBean usBean = new UserBean();
-		
-		userService.saveObject(usBean);
-		return "user/success";
+	public String saveUser(UserBean userBean,String edit_flag,String uId,
+			Model model){
+		ResultMessage rms;
+		if("edit".equals(edit_flag) && !StringUtils.isEmpty(uId)){
+			User user = new User();
+			user = UserTools.copyfromUsBean(user, userBean);
+			user.setuId(Integer.valueOf(uId));
+			rms = userService.updateObject(user);
+			model.addAttribute("edit", true);
+		}else{
+			rms = userService.saveObject(userBean);
+		}
+		model.addAttribute("success_url", "UserManager/user/search_user");
+		return "success";
 	}
 }

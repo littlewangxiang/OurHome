@@ -51,7 +51,7 @@
     from t_living_payment lp
     	left join t_user u on lp.user_id = u.u_id
     	left join t_specification sp on sp.u_id = lp.spec_id
-    where lp.delete_status = 1
+    where lp.delete_status = 1 order by add_date
   </select>
   <select id="selectByParam" resultMap="BaseResultMap" parameterType="com.wx.pro.common.entity.LivingPayment">
   	select 
@@ -81,6 +81,7 @@
       <if test="shareInfo != null" >
         and lp.share_info = #{shareInfo,jdbcType=VARCHAR}
       </if>
+      order by add_date
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     update t_living_payment

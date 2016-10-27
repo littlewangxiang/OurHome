@@ -1,4 +1,6 @@
-#Fri Oct 21 10:13:30 CST 2016
+#Thu Oct 27 16:13:03 CST 2016
 eclipse.preferences.version=1
-encoding//src/main/webapp/WEB-INF/views/user/list.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/success.html=UTF-8
+encoding//src/main/webapp/WEB-INF/views/user/add.html=UTF-8
+encoding//src/main/webapp/WEB-INF/views/user/list.html=UTF-8
 encoding/<project>=UTF-8

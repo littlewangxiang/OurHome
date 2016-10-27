@@ -23,10 +23,6 @@
 				window.open("${basePath}UserManager/user/del?userId="+user_id);
 			}
 		});
-		//编辑
-		$("#user_edt").live("click",function(){
-			window.onload("${basePath}UserManager/user/edt");
-		});
 	})
 </script>
 <title>search</title>
@@ -40,6 +36,9 @@
 			邮箱：<input name="email" id="email"/>
 			<input type="button" value="查询" id="form_submit" />
 		</form>
+	</div>
+	<div>
+		<a href="${basePath}UserManager/user/edit">新增</a>
 	</div>
 	<br>
 	<table>
@@ -61,7 +60,7 @@
 			<td>${user.personIntroduction!}</td>
 			<td>${user.feelWord!}</td>
 			<td><a id="user_del" user_id="${user.uId!}">删除</a></td>
-			<td><a id="user_edt" user_id="${user.uId!}">编辑</a></td>
+			<td><a href="${basePath}UserManager/user/edit?userId=${user.uId!}&edit=true">编辑</a></td>
 		</tr>
 		</#list>
 		</#if>

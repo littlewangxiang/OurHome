@@ -59,6 +59,7 @@
       <if test="commentInfo != null" >
         and comment_info = #{commentInfo,jdbcType=VARCHAR}
       </if>
+      order by add_date
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from t_insterest_thing_discuss
